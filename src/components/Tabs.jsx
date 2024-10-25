@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Tabs = () => {
 
@@ -32,35 +32,45 @@ const Tabs = () => {
         }
     ];
 
+    useEffect(() => {
+        const cachedTab = localStorage.getItem('currentTab');
+        if (cachedTab) {
+            setCurrentTab(cachedTab);
+        }
+    }, []);
+
     const handleTabClick = (e) => {
-        setCurrentTab(e.target.id)
-    }
+        const selectedTab = e.target.id;
+        setCurrentTab(selectedTab);
+        localStorage.setItem('currentTab', selectedTab);
+    };
 
     return (
         <div className='container'>
             {/* TODO Add tabs here */}
             <div className='tabs'>
-                {tabs.map((tab, i) =>
+                {tabs.map((tab) => (
                     <button
-                        key={i}
+                        key={tab.id}
                         id={tab.id}
                         disabled={currentTab === `${tab.id}`}
-                        onClick={(handleTabClick)}>
-                            {tab.tabTitle}
+                        onClick={handleTabClick}
+                    >
+                        {tab.tabTitle}
                     </button>
-                )}
-            </div> 
+                ))}
+            </div>
             <div className='content'>
-                {tabs.map((tab, i) => 
-                    <div key={i}>
-                        {currentTab === `${tab.id}` &&
+                {tabs.map((tab) => (
+                    <div key={tab.id}>
+                        {currentTab === `${tab.id}` && (
                             <div>
                                 <h3>{tab.title}</h3>
                                 <p>{tab.content}</p>
                             </div>
-                        }
+                        )}
                     </div>
-                )}
+                ))}
             </div> 
         </div>
     );
