@@ -16,12 +16,11 @@ body {
 }
 /* TODO: Add css here */
 .tabs {
-
+    display: flex;
+    justify-content: space-between;
 }
 
-.hello {
-    color: azure;
-}
+
 
 @media only screen and (max-width: 960px) {
 
