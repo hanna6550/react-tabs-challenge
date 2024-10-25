@@ -20,7 +20,44 @@ body {
     justify-content: space-between;
 }
 
+.tabs button {
+    background-color: black;
+    color: gray;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    padding: 15px;
+}
 
+.tabs button:hover {
+    background-color: #232121;
+    color: white;
+}
+
+.tabs button:disabled {
+    background-color: #4682B4;
+    color: white;
+}
+
+.content {
+    background: white;
+    padding: 60px;
+}
+
+.content h3 {
+    padding-bottom: 15px;
+}
+
+.content p {
+    font-size: 16px;
+    color: rgb(78, 74, 74);
+    font-weight: 200;
+    line-height: 1.8;
+    letter-spacing: 0.3px;   
+    font-weight: 100;
+    font-family: Arial;
+
+}
 
 @media only screen and (max-width: 960px) {
 
